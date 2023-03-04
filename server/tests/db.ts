@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
-
+import dotenv from 'dotenv';
+dotenv.config();
 export const connect = async () => {
    try {
-      const dbUri = "mongodb+srv://daniel:tBVDqQdDKwEXKRK7@cluster0.dfatese.mongodb.net/?retryWrites=true&w=majority";
+      const dbUri = process.env.CONNECTION_URL;
       const dbName = "jest";
-      await mongoose.connect(dbUri, {
+      await mongoose.connect(dbUri!, {
         dbName,
         autoCreate: true,
       });
