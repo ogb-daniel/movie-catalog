@@ -1,10 +1,11 @@
 import express from 'express'
-import { addMovie, getMovies, searchMovie } from '../controllers/movies';
+import { addMovie, getMovieById, getMovies, searchMovie } from '../controllers/movies';
 
 const router = express.Router();
 
 router.get('/movies',getMovies)
 router.post('/movies',addMovie)
 router.get('/movies/filter',searchMovie)
+router.get('/movies/:id',getMovieById)
 
 export default router;
