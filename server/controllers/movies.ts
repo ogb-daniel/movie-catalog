@@ -35,29 +35,34 @@ export const getMovieById = async(req:Request,res:Response)=>{
 
 export const searchMovie = async(req:Request,res:Response)=>{
     
-    const {title,genre} = req.body;
+    const search = req.body;
+    let genre = search.genre!;
+    let title = search.title!;
     try{
     let movies:any = await Movie.find();
-    if(genre){
+    if(genre.length! > 0){
         var moviesByGenre:any = [];
-        movies.filter((movie:any)=>{
+        movies!.filter((movie:any)=>{
             genre.forEach((gen:any)=>{
                 if( movie.genre?.includes(gen) || movie.genre?.toLowerCase().includes(gen) || movie.genre?.toUpperCase().includes(gen) ){
-                moviesByGenre.push(movie)
+                    if(!moviesByGenre.includes(movie)){
+
+                        moviesByGenre.push(movie)
+                    }
                 }
             })
         })
     }
 
     if(title){
-        if(genre){
-            var moviesBySearch =  moviesByGenre.filter((movie:any)=>{
+        if(genre.length! > 0){
+            var moviesBySearch =  moviesByGenre!.filter((movie:any)=>{
                 if(movie.title?.includes(title) || movie.title?.toLowerCase().includes(title) || movie.title?.toUpperCase().includes(title)){
                     return movie
                 }
             })
         }else{
-            var moviesBySearch =  movies.filter((movie:any)=>{
+            var moviesBySearch =  movies!.filter((movie:any)=>{
                 if(movie.title?.includes(title) || movie.title?.toLowerCase().includes(title) || movie.title?.toUpperCase().includes(title)){
                     return movie
                 }
@@ -70,6 +75,8 @@ export const searchMovie = async(req:Request,res:Response)=>{
  
 }catch(error:any){
     res.status(404).json({message:error.message})
+    console.log(error.message);
+    
 }
 
 

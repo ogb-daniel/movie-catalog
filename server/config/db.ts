@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import * as dotenv from 'dotenv'
+import Movie from '../models/movie'
 dotenv.config()
 class Database {
    private static _database: Database
@@ -7,9 +8,12 @@ class Database {
       const dbUrl = process.env.CONNECTION_URL
          if(dbUrl) {
             mongoose.connect(dbUrl)
-               .then(() => console.log('Connected with database'))
+               .then(() => {
+                  console.log('Connected with database')
+
+               })
                .catch(() => console.log('Not connected with database'))
-         }
+         }  
    }
    static getInstance() {
       if (this._database) {
