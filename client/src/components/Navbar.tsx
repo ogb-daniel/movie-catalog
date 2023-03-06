@@ -35,9 +35,12 @@ export const Navbar: React.FC<NavbarProps> = ({ setIsLoading, movies, setCurrent
             <div className=' flex shadow-md rounded-md search px-4 py-2 text-center w-max text-black' >
                 <input value={search} onKeyDown={(e) => {
                     if (search) {
-                        if (e.key === "Backspace") {
+                        if (pickedGenre.length === 0) {
 
-                            setCurrentMovies(movies);
+                            if (e.key === "Backspace") {
+
+                                setCurrentMovies(movies);
+                            }
                         }
                     }
                 }} onChange={(e) => {
