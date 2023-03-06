@@ -24,7 +24,7 @@ export const addMovie = async(req:Request,res:Response)=>{
 }
 
 export const getMovieById = async(req:Request,res:Response)=>{
-    const {movieId:_id} = req.params;
+    const {id:_id} = req.params;
     try {
         const movie = await Movie.findById(_id);
         res.status(200).json(movie)
