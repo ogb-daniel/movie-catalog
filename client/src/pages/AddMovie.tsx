@@ -19,8 +19,8 @@ export const AddMovie: React.FC<AddMovieProps> = ({ }) => {
     const navigate = useNavigate()
     const [movie, setMovie] = useState<MoviesType>({
         title: "",
-        author: "",
-        studio: "",
+        director: "",
+        production: "",
         preview: "",
         description: "",
         genre: "",
@@ -51,7 +51,7 @@ export const AddMovie: React.FC<AddMovieProps> = ({ }) => {
             <div className="container px-5 py-24 mx-auto">
                 <h1 onClick={() => {
                     navigate(-1)
-                }} className='flex items-center'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z" /><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 9V8l-4 4 4 4v-3h4v-2h-4z" fill="rgba(255,255,255,1)" /></svg>Go back</h1>
+                }} className='flex items-center hover:cursor-pointer'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z" /><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 9V8l-4 4 4 4v-3h4v-2h-4z" fill="rgba(255,255,255,1)" /></svg>Go back</h1>
                 <div className="flex flex-col text-center w-full mb-12">
                     <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4">Add Movie</h1>
                     <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Add a movie of your choice to the catalog</p>
@@ -68,17 +68,17 @@ export const AddMovie: React.FC<AddMovieProps> = ({ }) => {
                         </div>
                         <div className="p-2 w-1/2">
                             <div className="relative">
-                                <label className="leading-7 text-sm ">Author</label>
+                                <label className="leading-7 text-sm ">director</label>
                                 <input required type="text" onChange={(e) => {
-                                    setMovie({ ...movie, author: e.target.value })
+                                    setMovie({ ...movie, director: e.target.value })
                                 }} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             </div>
                         </div>
                         <div className="p-2 w-1/2">
                             <div className="relative">
-                                <label className="leading-7 text-sm ">Studio</label>
+                                <label className="leading-7 text-sm ">production</label>
                                 <input required type="text" onChange={(e) => {
-                                    setMovie({ ...movie, studio: e.target.value })
+                                    setMovie({ ...movie, production: e.target.value })
                                 }} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             </div>
                         </div>

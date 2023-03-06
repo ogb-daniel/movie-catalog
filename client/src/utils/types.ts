@@ -1,9 +1,10 @@
 export interface MoviesType {
+    _id?:string,
     title: string,
     genre: string,
     description: string,
     preview: string,
-    author: string,
-    studio: string,
+    director: string,
+    production: string,
 
 }

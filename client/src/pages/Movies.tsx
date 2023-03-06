@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Card } from '../components/Card';
 import { Navbar } from '../components/Navbar';
 import axiosInstance from '../services/axios';
@@ -56,9 +57,11 @@ export const Movies: React.FC<MoviesProps> = ({ }) => {
                         currentMovies.length > 0 ?
                             <div className='mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
                                 {
-                                    currentMovies.map(({ title, genre, preview }, key) => {
+                                    currentMovies.map(({ _id: id, title, genre, preview }, key) => {
                                         return (
-                                            <Card key={key} title={title} genre={genre} preview={preview} />
+                                            <Link to={`/${id}`} key={id}>
+                                                <Card title={title} genre={genre} preview={preview} />
+                                            </Link>
                                         )
                                     })
                                 }
