@@ -18,6 +18,8 @@ import Movie, {
             title: faker.word.noun(),
             description: faker.word.noun(),
             genre: faker.word.noun(),
+            director: faker.word.noun(),
+            production: faker.word.noun(),
             preview:faker.image.abstract()
         }
         const movie = new Movie({...movieInput});
