@@ -32,6 +32,7 @@ export const Movies: React.FC<MoviesProps> = ({ }) => {
 
     async function fetchMovies() {
         const response = await axiosInstance.get(endpoints.movies);
+
         setMovies(response.data);
         setCurrentMovies(response.data);
         setIsLoading(false);
